@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -23,9 +25,10 @@ const Signup = () => {
         " https://blogpost-mzlh.onrender.com/user/register",
         form
       );
-     
-        console.log("checkong detail ", res.data);
+
+      console.log("checkong detail ", res.data);
       alert(res.data?.user?.data || "Signup Successful!");
+      navigate("/login");
     } catch (err) {
       // console.log(" ERROR OCCURRED");
       // console.log(" err.message:", err.message);
